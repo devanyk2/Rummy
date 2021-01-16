@@ -12,18 +12,22 @@ public class human implements player{
 
 	/* Player has option to draw from the deck(unseen) or discard pile(seen) */
 	@Override
-	public void draw(){
+	public void draw(game g){
 
 	}
 	/* If player has a same suit straight(of at least 3 cards) or 3 of a kind they can play */
 	@Override
-	public void play(){
+	public void play(game g){
 
 	}
 	/* Player must always end turn by discarding one card */
 	@Override
-	public void discard(){
+	public void discard(game g){
 
+	}
+	@Override
+	public String getName(){
+		return this.name;
 	}
 
 }

@@ -26,4 +26,5 @@ public class cardTest{
 		Exception exception = assertThrows(IllegalArgumentException.class,  () -> {new card(1, "a");});
 		assertTrue("Invalid Suit ".equals(exception.getMessage()));
 	}
+
 }

@@ -11,8 +11,12 @@ public class deckTest{
 		assertEquals(52, example.size());
 	}
 
+	@Test public void deck_constructor_nodupes(){
+		assertTrue(noDupes());
+	}
+
 	/* checks to make sure no duplicate cards exist */
-	@Test public void deck_constructor_noDupes(){
+	public boolean noDupes(){
 		deck example = new deck();
 		HashMap<String, ArrayList<Integer>> test = new HashMap<String, ArrayList<Integer>>();
 		while( example.size() > 0){			
@@ -24,11 +28,14 @@ public class deckTest{
 			}
 			else{
 				ArrayList<Integer> temp = test.get(c.suit); // If the suit exists
-				assertFalse(temp.contains(c.value));        // Make sure it is the only number
+				if (temp.contains(c.value)){
+					return false;
+				}
 				temp.add(c.value);		
 				test.put(c.suit, temp);
 			}
-		}	
+		}
+		return true;	
 	}
 
 	/* should be 13 cards per suit */
@@ -82,10 +89,30 @@ public class deckTest{
 	}
 	
 	/* Test multiple deals */
-	@Test public void deck_deal_mult(){
+	@Test public void deck_shuffle(){
 		deck example = new deck();
-		card dealt1 = example.deal();
-		card dealt2 = example.deal();
-		assertEquals(50, example.size());
+		example.shuffle();
+		assertEquals(52, example.size());
 	}
+	/* test the fresh function of a deck */
+	@Test public void deck_refresh(){
+		deck example = new deck();
+		card top = example.deal();
+		deck.refresh();
+		assertEqual(52, deck.size());
+	}
+	@Test public void deck_peek(){
+		deck example = new deck();
+		card first = deck.peek();
+		card second = deck.deal();
+		assertEqual(first.value, second.value);
+		assertTrue(first.suit.equals(second.suit));
+	}
+
+
+
+
+
+
+
 }
