@@ -11,8 +11,10 @@ public class playerTest{
 
 	/* Test constructor */
 	@Test public void player_constructor_name(){
-		human test = new human("Dave");
+		player test = new human("Dave");
 		assertTrue("Dave".equals(test.name));
-	}	
+	}
+
+		
 
 }

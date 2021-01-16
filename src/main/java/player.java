@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public interface player{
-
-	void draw();
-	void play();
-	void discard();
+	public void draw(game g);
+	public void play(game g);
+	public void discard(game g);
+	public String getName();
 }
 
 
